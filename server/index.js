@@ -1,14 +1,26 @@
-import express from 'express';
-import cors from 'cors';
-
-const server = express();
-
-server.get ("/", (req, res) => {         // "This code tells the server what to do when someone visits the home page."
-    res.send ("The server is running!")   
- })   
+import express from 'express' 
+import cors from 'cors' 
+import studentRouter from './Routers/studentRouter.js'
+import courseRouter from './Routers/courseRouter.js'
+import userRouter from './Routers/userRouter.js'
 
 
-server.listen (4000, ()=>{
-    console.log("Server is running on port 4000")  // "This code tells the server to start listening for incoming requests."
- 
- });
+const server = express(); 
+server.use(express.json()) 
+server.use(cors()) 
+
+
+//http://localhost:4000/students/
+//http://localhost:4000/students/1
+server.use("/students", studentRouter) 
+server.use ("/courses", courseRouter) 
+server.use("/users", userRouter)  //http://localhost:4000/users/1
+
+
+server.get("/", (req, res) => { 
+res.send("The server is running") 
+}) 
+
+server.listen(4000, () => { 
+console.log("The server is running at port 4000") 
+})
