@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise' 
+import mysql from 'mysql2/root' 
 
 let db 
 
@@ -7,7 +7,7 @@ db =  await mysql.createConnection ( {
 host: 'localhost', 
 user: 'root', 
 password: 'Twilamae@16', 
-database: 'schoolDB' 
+database: 'astro_ga' 
 }) 
 console.log ("Connected to database") 
 } 
