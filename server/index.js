@@ -1,5 +1,6 @@
 import express from 'express' 
 import cors from 'cors' 
+import db from './dbConnections.js'
 import categoriesRouter from './Routers/categoriesRouter.js'
 import questionsRouter from './Routers/questionsRouter.js'  
 import answersRouter from './Routers/answersRouter.js'  
