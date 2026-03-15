@@ -1,42 +1,62 @@
-import React, {useState} from 'react'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import axius from 'axios'
+import { useState } from "react";
+import { Form, Button, Card } from "react-bootstrap";
 
 
-function Login() {
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        email: ''
-    })
 
-     function handleSubmit(event) {
-        inputName = event.target.name
-        inputValue = event.target.value
-        // setFormData ({...formData, [inputName]: inputValue })
-     }
+function Login({ onLogin }) {
+  const [error, setError] = useState("");
 
-return (
-    <Form>
-      <Form.Group className="mb-3" controlId="formGroupusername">
-        <Form.Label>User Name</Form.Label>
-        <Form.Control type="username" placeholder="Enter username" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formGroupPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formGroupEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-      </Form.Group>
-        <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
-    )
- }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
 
-   
-export default Login;
+    const data = {
+      username: form.get("username"),
+      password: form.get("password")
+    };
+
+    try {
+      const res = await fetch("http://localhost:4000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const user = await res.json();
+
+      if (!res.ok) {
+        setError(user.message || "Login failed");
+        return;
+      }
+
+      onLogin(user); // send user object to parent
+    } catch (err) {
+      setError("Server error");
+    }
+  };
+
+  return (
+    <Card className="p-4 shadow-sm">
+      <h3 className="text-center mb-3">Login</h3>
+
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3">
+          <Form.Label>Username</Form.Label>
+          <Form.Control type="text" name="username" required />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" name="password" required />
+        </Form.Group>
+
+        <Button type="submit" className="w-100" variant="primary">
+          Login
+        </Button>
+      </Form>
+    </Card>
+  );
+}
+
+
+export default Login;  

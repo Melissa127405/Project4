@@ -1,18 +1,31 @@
-import express from 'express'
-import db from '../dbConnections.js';
+import express from "express";
+import db from "../dbConnections.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get ("/", async (req,res)=> {
-  console.log ('method: ', req.method)
-  let userName =  req.body.userName
-  let password = req.body.password
-  console.log (userName, password)
-  // const {userName, password} = req.body
-  // console.log (userName, password)
-  let [response] = await db.query (`SELECT * FROM users WHERE userName=? AND password=?`, [userName, password])
-  console.log (response)
-  res.send (response)
-})
+// POST /login
+router.post("/", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    console.log("Login attempt:", username, password);
+
+    const [rows] = await db.query(
+      "SELECT * FROM users WHERE username = ? AND password = ?",
+      [username, password]
+    );
+
+    if (rows.length === 0) {
+      return res.status(401).json({ message: "Invalid username or password" });
+    }
+
+    // Return the first matching user
+    res.json(rows[0]);
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error during login" });
+  }
+});
 
 export default router;

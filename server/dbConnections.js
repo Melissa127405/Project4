@@ -1,18 +1,21 @@
-import mysql from 'mysql2/root' 
+import mysql from "mysql2/promise";
 
-let db 
+let db;
 
-try { 
-db =  await mysql.createConnection ( { 
-host: 'localhost', 
-user: 'root', 
-password: 'Twilamae@16', 
-database: 'astro_ga' 
-}) 
-console.log ("Connected to database") 
-} 
-catch (error) { 
-console.log ("error connecting to database: ", error) 
-} 
+try {
+  db = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "Twilamae@16",
+    database: "astro_ga",
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+  });
+
+  console.log("Connected to MySQL database (pool created)");
+} catch (error) {
+  console.error("Error connecting to database:", error);
+}
 
 export default db;
