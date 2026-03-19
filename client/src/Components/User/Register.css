@@ -1,0 +1,26 @@
+.register-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.error-text {
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-left: 10px;
+}
+
+.success-text {
+  color: #28a745;
+  font-weight: bold;
+  text-align: center;
+}

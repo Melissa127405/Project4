@@ -8,11 +8,13 @@ function Answers({ questionID, userID }) {
   const [error, setError] = useState("");
 
   // Load answers for this question
-  useEffect(() => {
-    fetch(`http://localhost:4000/answers?questionID=${questionID}`)
-      .then((res) => res.json())
-      .then((data) => setAnswers(data))
-      .catch(() => setError("Error loading answers"));
+ useEffect(() => {
+  if (!questionID) return;   //  Correct guard for this component
+
+  fetch(`http://localhost:4000/answers/question/${questionID}`)
+    .then(res => res.json())
+    .then(data => setAnswers(data))
+    .catch(err => console.error(err));
   }, [questionID]);
 
   const handleSubmit = async (e) => {
@@ -60,8 +62,8 @@ function Answers({ questionID, userID }) {
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
-          <Form.Label>Your Answer</Form.Label>
-          <Form.Control type="text" name="content" required />
+          <Form.Label htmlFor="answerInput">Your Answer</Form.Label>
+          <Form.Control id="answerInput" type="text" name="content" required />  
         </Form.Group>
 
         <Button type="submit" className="w-100">

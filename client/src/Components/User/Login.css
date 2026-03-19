@@ -1,0 +1,56 @@
+/* Full page background */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #790467; 
+
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* The card */
+.login-card {
+  background: #8047ebdc; /* lighter pink */
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.326);
+}
+
+/* Title */
+.login-card h3 {
+  color: #32caa6;
+  font-weight: bold;
+}
+
+/* Link */
+.register-link {
+  color: #59ea10;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.register-link:hover {
+  color:#940353f6;
+}
+
+/* Input focus */
+.login-card .form-control:focus {
+  border-color: #44e010;
+  box-shadow: 0 0 5px rgba(205, 79, 230, 0.505);
+}
+
+/* Button */
+.login-card button {
+  background: #07c314;
+  border: none;
+}
+
+.login-card button:hover {
+  background: #790467;
+}
+
+

@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import AppLayout from "./Components/AppLayout";
-import Login from "./Components/Login";
-import Questions from "./Components/QA/Questions";
-import Answers from "./Components/QA/Answers";
-import AppNavbar from "./Components/AppNavbar";
+import AppLayout from "./Components/Layout/Applayout";
+import Login from "./Components/User/Login";
+import Questions from "./Components/Q&A/Questions";
+import Answers from "./Components/Q&A/Answers";
+import AppNavbar from "./Components/Layout/Appnavbar";
+import Register from "./Components/User/Register";
+import Dashboard from "./Components/Dashboard/Dashboard";
+
 
 function App() {
   const [user, setUser] = useState(null);
+  const [showRegister, setShowRegister] = useState(false);
   const [categories, setCategories] = useState([]);
   const [selectedQuestionID, setSelectedQuestionID] = useState(null);
 
@@ -48,32 +52,31 @@ function App() {
   };
 
   return (
-    <>
-   <AppNavbar user={user} onLogout={() => setUser(null)} /> 
-  <AppLayout>
-    <h2 className="text-center mb-4">React</h2>
+  <>
+    <AppNavbar user={user} onLogout={() => setUser(null)} />
 
-    {!user && <Login onLogin={setUser} />}
+    <AppLayout>
+      <h2 className="text-center mb-4">The Cosmos are Calling </h2>
 
-    {user && (
-      <>
-        <Questions
-          categories={categories}
-          userID={user.userID}
-          onSubmit={handleCreateQuestion}
+      {/* LOGIN SCREEN */}
+      {!user && !showRegister && (
+        <Login 
+          onLogin={setUser} 
+          onShowRegister={() => setShowRegister(true)} 
         />
+      )}
 
-        {selectedQuestionID && (
-          <Answers
-            questionID={selectedQuestionID}
-            userID={user.userID}
-            onSubmit={handleCreateAnswer}
-          />
-        )}
-      </>
-    )}
-  </AppLayout>
-</>
+      {/* REGISTER SCREEN */}
+      {!user && showRegister && (
+        <Register 
+          onShowLogin={() => setShowRegister(false)} 
+        />
+      )}
+
+      {/* DASHBOARD AFTER LOGIN */}
+      {user && <Dashboard user={user} />}
+    </AppLayout>
+  </>
 );
 }
 

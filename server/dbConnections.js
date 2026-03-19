@@ -7,7 +7,7 @@ try {
     host: "localhost",
     user: "root",
     password: "Twilamae@16",
-    database: "astro_ga",
+    database: "astro_qa",
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
