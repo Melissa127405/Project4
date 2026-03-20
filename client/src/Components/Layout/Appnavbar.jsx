@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
-function AppNavbar({ user, onLogout }) {
+function AppNavbar({ user, onLogout, onShowLogin, onShowRegister }) {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
@@ -21,7 +21,13 @@ function AppNavbar({ user, onLogout }) {
           </Nav>
 
           <Nav>
-            {!user && <Nav.Link>Login</Nav.Link>}
+            {!user && (
+              <>
+              <Nav.Link onClick={onShowLogin}>Login</Nav.Link>
+              <Nav.Link onClick={onShowRegister}>Register</Nav.Link>
+              </>
+            )}
+
 
             {user && (
               <Button variant="outline-light" onClick={onLogout}>

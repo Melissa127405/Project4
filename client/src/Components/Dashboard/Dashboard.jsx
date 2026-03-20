@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Row, Col, Card, ListGroup, Button } from "react-bootstrap";
+import "./Dashboard.css";
+import planets from "../../images/planets.jpg";
 
 function Dashboard({ user }) {
   const [categories, setCategories] = useState([]);
@@ -49,12 +51,24 @@ function Dashboard({ user }) {
         setAnswers([]);
       });
   }, [selectedQuestion]);
-
+ 
   return (
-    <Row className="mt-4">
+  <div
+    className="dashboard-wrapper"
+    style={{ backgroundImage: `url(${planets})` }}
+  >
+    <div className="dashboard-flex">
+
       {/* LEFT SIDEBAR */}
-      <Col md={3}>
-        <Card className="shadow-sm" style={{ height: "80vh", overflowY: "auto" }}>
+      <div className="sidebar-container">
+        <Card
+          className="shadow-sm category-card"
+          style={{
+            height: "88vh",
+            overflowY: "auto",
+            minWidth: "260px"
+          }}
+        >
           <Card.Header>
             <strong>Categories</strong>
           </Card.Header>
@@ -72,11 +86,11 @@ function Dashboard({ user }) {
             ))}
           </ListGroup>
         </Card>
-      </Col>
+      </div>
 
       {/* MAIN CONTENT */}
-      <Col md={9}>
-        <Card className="p-4 shadow-sm">
+      <div className="content-container">
+        <Card className="p-4 shadow-sm dashboard-content-card">
           <h3 className="mb-3">Welcome, {user.username}</h3>
 
           {!selectedCategory && (
@@ -117,7 +131,7 @@ function Dashboard({ user }) {
 
               <ListGroup>
                 {answers.map(a => (
-                  <ListGroup.Item key={a.answerID}>
+                  <ListGroup.Item key={a.answerID} className="answer-item">
                     {a.content}
                   </ListGroup.Item>
                 ))}
@@ -133,9 +147,11 @@ function Dashboard({ user }) {
             </>
           )}
         </Card>
-      </Col>
-    </Row>
-  );
+      </div>
+
+    </div>
+  </div>
+);
 }
 
 export default Dashboard;

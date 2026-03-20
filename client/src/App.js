@@ -53,7 +53,12 @@ function App() {
 
   return (
   <>
-    <AppNavbar user={user} onLogout={() => setUser(null)} />
+      <AppNavbar
+        user={user}
+        onLogout={() => setUser(null)}
+        onShowLogin={() => setShowRegister(false)}
+       onShowRegister={() => setShowRegister(true)}
+      />
 
     <AppLayout>
       <h2 className="text-center mb-4">The Cosmos are Calling </h2>

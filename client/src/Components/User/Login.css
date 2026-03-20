@@ -1,20 +1,27 @@
 /* Full page background */
 .login-page {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #790467; 
-
-  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+.login-card label {
+  color: #32caa6;   /* or any color you want */
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* The card */
 .login-card {
-  background: #8047ebdc; /* lighter pink */
+  background: #8047eb72; /* lighter pink */
   border-radius: 12px;
   border: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.326);

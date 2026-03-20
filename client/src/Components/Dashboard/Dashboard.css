@@ -1,0 +1,138 @@
+/* Full page background */
+.dashboard-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a0033, #3b0066, #12001f);
+  padding: 25px;
+  color: rgba(255, 255, 255, 0.981);
+}
+
+.dashboard-wrapper {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.dashboard-flex {
+  display: flex;
+  gap: 25px;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar-container {
+  width: 300px;      /* fixed readable width */
+  flex-shrink: 0;    /* prevents collapsing */
+}
+
+/* Main content */
+.content-container {
+  flex-grow: 1;      /* takes remaining space */
+  min-width: 0;      /* prevents overflow */
+}
+
+/* Title */
+.dashboard-wrapper h3 {
+  color: #d8b4ff;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(216, 180, 255, 0.6);
+}
+
+.category-card {
+  overflow-y: overlay;
+  scrollbar-gutter: stable;
+}
+
+/* Sidebar card */
+.category-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: white;
+}
+
+/* Sidebar header */
+.category-card .card-header {
+  background: rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.2rem;
+  color: #e8d4ff;
+  text-align: center;
+}
+
+/* Make each category item larger and more readable */
+.category-card .list-group-item {
+  padding: 14px 18px;        /* more vertical + horizontal space */
+  font-size: 1.1rem;         /* bigger text */
+  letter-spacing: 0.5px;     /* more elegant spacing */
+  background: transparent;
+  color: #f5eaff;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.category-card .list-group-item + .list-group-item {
+  margin-top: 6px;   /* space between items */
+}
+
+/* Hover effect */
+.category-card .list-group-item:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateX(4px);
+}
+
+/* Active (selected) category */
+.category-card .list-group-item.active {
+  background: #9b4dff !important;
+  color: white !important;
+  font-weight: 600;
+  border: none;
+}
+
+/* Main content card */
+.dashboard-content-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Section titles */
+.dashboard-content-card h4 {
+  color: #d8b4ff;
+  margin-bottom: 15px;
+}
+
+/* Question list items */
+.dashboard-content-card .list-group-item {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #f5eaff;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.dashboard-content-card .list-group-item:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateX(4px);
+}
+
+/* Answers */
+.dashboard-content-card .answer-item {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #f0eaff;
+  border-left: 4px solid #9b4dff;
+}
+
+/* Back button */
+.dashboard-content-card .btn-secondary {
+  background: #9b4dff;
+  border: none;
+}
+
+.dashboard-content-card .btn-secondary:hover {
+  background: #c07aff;
+}

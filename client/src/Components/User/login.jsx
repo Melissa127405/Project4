@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap";
 import "./Login.css";
+import skymoon from "../../images/skymoon.jpg";
 
 function Login({ onLogin, onShowRegister }) {
   const [username, setUsername] = useState("");
@@ -33,12 +34,12 @@ function Login({ onLogin, onShowRegister }) {
   };
 
 
-  return (
-  <div className="login-page">
-  
-
+return (
+  <div
+    className="login-page"
+    style={{ backgroundImage: `url(${skymoon})` }}
+  >
     <Card className="login-card p-4 shadow-sm mx-auto" style={{ maxWidth: "400px" }}>
-
       <h3 className="text-center mb-3">Login</h3>
 
       <p className="text-center mt-3">
@@ -46,8 +47,9 @@ function Login({ onLogin, onShowRegister }) {
           Create an account
         </span>
       </p>
-  
+
       {error && <Alert variant="danger">{error}</Alert>}
+
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Username</Form.Label>
@@ -73,9 +75,9 @@ function Login({ onLogin, onShowRegister }) {
           Login
         </Button>
       </Form>
-   </Card>
+    </Card>
   </div>
-  );
-
+);
 }  
+
 export default Login;

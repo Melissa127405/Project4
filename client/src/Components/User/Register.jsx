@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Register.css";
+import sky from "../../images/sky.jpg";
 
 function Register({ onShowLogin }) {
   const [form, setForm] = useState({
@@ -10,7 +11,7 @@ function Register({ onShowLogin }) {
   });
 
   const [errors, setErrors] = useState({});
-  const [success, setSuccess] = useState("");   // ⭐ moved to top level
+  const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -52,13 +53,16 @@ function Register({ onShowLogin }) {
       setSuccess("You are registered! Redirecting to login...");
 
       setTimeout(() => {
-        onShowLogin();   // ⭐ switch to login screen
+        onShowLogin();
       }, 1500);
     }
   };
 
   return (
-    <>
+    <div
+      className="register-page"
+      style={{ backgroundImage: `url(${sky})` }}
+    >
       {success && (
         <div className="success-text mb-2">
           {success}
@@ -66,7 +70,6 @@ function Register({ onShowLogin }) {
       )}
 
       <Form onSubmit={handleSubmit} className="register-form">
-
         {/* USERNAME */}
         <div className="form-row">
           <Form.Group className="flex-grow-1">
@@ -128,7 +131,7 @@ function Register({ onShowLogin }) {
           Register
         </Button>
       </Form>
-    </>
+    </div>
   );
 }
 
