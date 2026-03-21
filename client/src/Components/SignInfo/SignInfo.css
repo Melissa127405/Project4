@@ -1,0 +1,72 @@
+
+.sign-info-wrapper {
+  padding: 40px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 240, 255, 0.7),
+    rgba(230, 210, 255, 0.7)
+  );
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+/* Header */
+.sign-info-wrapper h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #5a3e85;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+
+.sign-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(90, 60, 120, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sign-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sign-col {
+  display: flex;
+}
+
+
+.sign-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(90, 60, 120, 0.25);
+}
+
+
+.sign-card .card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #6b4fa3;
+}
+
+/* Card text */
+.sign-card .card-text {
+  font-size: 1rem;
+  color: #4a3b6b;
+}
+
+
+.sign-card .card-title span {
+  font-size: 1.8rem;
+  margin-right: 6px;
+}
+
+
+.sign-info-wrapper {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

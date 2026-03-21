@@ -13,7 +13,7 @@ function Login({ onLogin, onShowRegister }) {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:4000/login", {
+      const res = await fetch("http://localhost:4000/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

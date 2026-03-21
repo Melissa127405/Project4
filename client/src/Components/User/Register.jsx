@@ -46,18 +46,39 @@ function Register({ onShowLogin }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (validate()) {
-      setSuccess("You are registered! Redirecting to login...");
+  if (!validate()) return;
 
-      setTimeout(() => {
-        onShowLogin();
-      }, 1500);
+  try {
+    const res = await fetch("http://localhost:4000/user/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: form.username,
+        password: form.password,
+      }),
+    });
+
+    if (!res.ok) {
+      setErrors({ general: "Registration failed" });
+      return;
     }
-  };
 
+    setSuccess("You are registered! Redirecting to login...");
+
+    setTimeout(() => {
+      onShowLogin();
+    }, 1500);
+
+  } catch (err) {
+    console.error(err);
+    setErrors({ general: "Server error. Please try again." });
+  }
+    };
+
+  
   return (
     <div
       className="register-page"

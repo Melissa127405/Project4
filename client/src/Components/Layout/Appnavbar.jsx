@@ -2,6 +2,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+
 
 function AppNavbar({ user, onLogout, onShowLogin, onShowRegister }) {
   return (
@@ -14,13 +16,13 @@ function AppNavbar({ user, onLogout, onShowLogin, onShowRegister }) {
           <Nav className="me-auto">
             {user && (
               <>
-                <Nav.Link>Ask Question</Nav.Link>
-                <Nav.Link>My Questions</Nav.Link>
-              </>
-            )}
-          </Nav>
-
-          <Nav>
+                <Nav.Link as={Link} to="/sign-info" className="outline-light">
+                                        Zodiac Sign Info
+                </Nav.Link>
+               </>
+            )} 
+            </Nav>
+            <Nav>
             {!user && (
               <>
               <Nav.Link onClick={onShowLogin}>Login</Nav.Link>

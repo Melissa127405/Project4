@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+#  Nodejs Express
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+//  3-Tier architecture that lets users register and log in to a forum, where users may ask and answer questions.
 
-## Available Scripts
+## Astrological Signs Q & A 
 
-In the project directory, you can run:
+// I made a simple base of questions for each sign. Although , A user can ask a question, they may only recieve a *no answer for this question responce
 
-### `npm start`
+# User 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+// 1. Users are able to Register 
+// 2. Users are able to Login once Registered
+// 3. Users are able to see foundational info
+//    about each zodiac sign 
+// 4. User can Ask a question about a sign 
+// 5. User can Log out 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# Database schema + Example Data 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+//  A MySQL database
 
-### `npm run build`
+	Tables for:
+	users,categories,questions,answers
+    Example data already inserted 	
+    A working EER diagram
+	SQL scripts that create and populate the database
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Application Layer 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+// Nodejs + Express JSON API 
 
-### `npm run eject`
+   to acces database and returns JSON 
+   Express server running on port 4000
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Routes:
+   auth/register
+   auth/login
+   categories
+   questions
+   answers 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# future plans 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ // 1. Adding ability to put in your bith date 
+       to go directly to that sign 
+    2. Compatability Q&A 
+    3. Sharpen the design visuals    
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# My EEr Diagram for the Database 
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![EER Diagram](./src/images/EER%20Diagram.png)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
