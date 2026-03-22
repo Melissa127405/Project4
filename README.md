@@ -63,6 +63,6 @@
 # My EEr Diagram for the Database 
 
 
-![EER Diagram](./Image/EER%20Diagram.png)
+![EER Diagram](./server/Image/EER%20Diagram.png)
 
 
