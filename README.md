@@ -20,17 +20,17 @@
 # Client side 
 
 // React
-   React Router v6
-   Bootstrap
-   GitHub Pages 
+ /  React Router v6
+ /  Bootstrap
+ /  GitHub Pages 
 
 # Server side 
 
-// Node.js
-   Express.js
-   MySQL
-   bcrypt for passwoord hashing
-   Runs locally on localhost:4000
+  /  Node.js
+  / Express.js
+  / MySQL
+  / bcrypt for passwoord hashing
+  / Runs locally on localhost:4000
 
 
 
@@ -74,9 +74,9 @@ CREATE TABLE answers (
 
 # Database Variables
 
-// I have included .env.example in the server side to allow everything to run locally 
+//   I have included .env.example in the server side to allow           everything to run locally 
 
-// dbConnections 
+//    dbConnections.js
 
     host: "localhost",
     user: "root",
@@ -97,25 +97,26 @@ CREATE TABLE answers (
 
 # Application Layer 
 
-// Nodejs + Express JSON API 
+ // Nodejs + Express JSON API 
 
-   to acces database and returns JSON 
+  * to acces database and returns JSON 
    Express server running on port 4000
 
-   Routes:
-   auth/register
-   auth/login
-   categories
-   questions
-   answers 
+  * Routes:
+
+ 1. auth/register
+ 2.  auth/login
+ 3. categories
+ 4.  questions
+ 5.  answers 
 
 
 # future plans 
 
- // 1. Adding ability to put in your bith date 
+ 1. Adding ability to put in your bith date 
        to go directly to that sign 
-    2. Compatability Q&A 
-    3. Sharpen the design visuals    
+ 2. Compatability Q&A 
+ 3. Sharpen the design visuals    
     
 
 
