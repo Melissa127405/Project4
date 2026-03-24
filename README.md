@@ -19,18 +19,18 @@
 
 # Client side 
 
-// React
- /  React Router v6
- /  Bootstrap
- /  GitHub Pages 
+* React
+*  React Router v6
+*  Bootstrap
+*  GitHub Pages 
 
 # Server side 
 
-  /  Node.js
-  / Express.js
-  / MySQL
-  / bcrypt for passwoord hashing
-  / Runs locally on localhost:4000
+*  Node.js
+*  Express.js
+*  MySQL
+*  bcrypt for passwoord hashing
+*  Runs locally on localhost:4000
 
 
 
