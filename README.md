@@ -17,18 +17,82 @@
 > Note: At this stage, user-submitted questions return a default  
 > **“No answer for this question”** response unless seeded in the database.
 
+# Client side 
+
+// React
+   React Router v6
+   Bootstrap
+   GitHub Pages 
+
+# Server side 
+
+// Node.js
+   Express.js
+   MySQL
+   bcrypt for passwoord hashing
+   Runs locally on localhost:4000
 
 
 
-# Database schema + Example Data 
+# Database schema 
 
-//  A MySQL database
+CREATE DATABASE IF NOT EXISTS astro_qa;
+USE astro_qa;
 
-    Tables for:
-    users,categories,questions,answers
-    Example data already inserted 	
-    A working EER diagram
-    SQL scripts that create and populate the database
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT
+);
+
+CREATE TABLE questions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  category_id INT NOT NULL,
+  question_text TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+);
+
+CREATE TABLE answers (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  question_id INT NOT NULL,
+  user_id INT NOT NULL,
+  answer_text TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+# Database Variables
+
+// I have included .env.example in the server side to allow everything to run locally 
+
+// dbConnections 
+
+    host: "localhost",
+    user: "root",
+    password: "Twilamae@16",
+    database: "astro_qa",
+
+
+# Frontend runs at 
+
+//  http://localhost:3000
+
+
+# Frontend communicates to Backend 
+
+//  http://localhost:4000
+
 
 
 # Application Layer 
@@ -53,10 +117,6 @@
     2. Compatability Q&A 
     3. Sharpen the design visuals    
     
-
-# DataBase 
-
-// I have included .env.example in the server side to allow everything to run locally 
 
 
 

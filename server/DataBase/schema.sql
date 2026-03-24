@@ -1,37 +1,53 @@
--- ============================================
--- Categories Table
--- ============================================
+CREATE DATABASE IF NOT EXISTS astro_qa;
+USE astro_qa;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE categories (
-  categoryID INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
   description TEXT
 );
 
--- ============================================
--- Questions Table
--- ============================================
 CREATE TABLE questions (
-  questionID INT AUTO_INCREMENT PRIMARY KEY,
-  categoryID INT NOT NULL,
-  question TEXT NOT NULL,
-  FOREIGN KEY (categoryID) REFERENCES categories(categoryID)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  category_id INT NOT NULL,
+  question_text TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
--- ============================================
--- Answers Table
--- ============================================
 CREATE TABLE answers (
-  answerID INT AUTO_INCREMENT PRIMARY KEY,
-  questionID INT NOT NULL,
-  answer TEXT NOT NULL,
-  FOREIGN KEY (questionID) REFERENCES questions(questionID)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  question_id INT NOT NULL,
+  user_id INT NOT NULL,
+  answer_text TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- ============================================
--- Users Table (for login/register)
--- ============================================
-CREATE TABLE users (
-  userID INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(255) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL
-);
+
+
+USE astro_qa;
+
+INSERT INTO categories (name, description) VALUES
+('Aries', 'The Ram — Fire sign ruled by Mars'),
+('Taurus', 'The Bull — Earth sign ruled by Venus'),
+('Gemini', 'The Twins — Air sign ruled by Mercury'),
+('Cancer', 'The Crab — Water sign ruled by the Moon'),
+('Leo', 'The Lion — Fire sign ruled by the Sun'),
+('Virgo', 'The Maiden — Earth sign ruled by Mercury'),
+('Libra', 'The Scales — Air sign ruled by Venus'),
+('Scorpio', 'The Scorpion — Water sign ruled by Pluto'),
+('Sagittarius', 'The Archer — Fire sign ruled by Jupiter'),
+('Capricorn', 'The Goat — Earth sign ruled by Saturn'),
+('Aquarius', 'The Water Bearer — Air sign ruled by Uranus'),
+('Pisces', 'The Fish — Water sign ruled by Neptune');
