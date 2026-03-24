@@ -127,3 +127,10 @@ CREATE TABLE answers (
 ![EER Diagram](./server/Image/EER%20Diagram.png)
 
 
+#  Screenshots of App
+
+ ![SC1](./server/Image/SC1.png)
+
+ ![SC1](./server/Image/SC2.png)
+
+ ![SC1](./server/Image/SC3.png)
